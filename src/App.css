@@ -10,3 +10,12 @@ h1 {
   margin: 50px 0px;
 
 }
+
+.ellipsis {
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  display: -webkit-box; 
+  -webkit-line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  font-size: 15px;
+ }
