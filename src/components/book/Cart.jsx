@@ -24,10 +24,11 @@ const Cart = () => {
   }
   
   const onClickDelete = (book)=>{
-    if(Window.confirm(`${book.title}삭제하실래요?`)){
+    if(window.confirm(`${book.title}삭제하실래요?`)){
       remove(ref(db, `cart/${uid}/${book.isbn}`));
       }
   }
+
   useEffect(()=>{
     callAPI();
   },[]);
