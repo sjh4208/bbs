@@ -9,7 +9,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const auth = getAuth(app);
     const [form, setForm] = useState({
-        email:'blue@test.com',
+        email:'red@test.com',
         pass:'12341234'
     });
     const {email, pass} = form;
@@ -32,7 +32,7 @@ const Login = () => {
                 sessionStorage.setItem('email', email);
                 sessionStorage.setItem('uid', success.user.uid);
                 if(sessionStorage.getItem('target')){
-                    navi(sessionStorage.getItem('target'));
+                    navi(sessionStorage.getItem('target'))
                 }else{
                     navi('/');
                 }
@@ -48,7 +48,7 @@ const Login = () => {
 
   return (
     <Row className='my-5 justify-content-center'>
-      <Col md={6}>
+      <Col md={6} lg={4}>
         <Card>
             <Card.Header>
                 <h3 className='text-center'>로그인</h3>
@@ -57,12 +57,14 @@ const Login = () => {
                 <form onSubmit={onSubmit}>
                     <InputGroup className='mb-2'>
                         <InputGroup.Text style={{width:100}} className='justify-content-center'>
-                            이메일</InputGroup.Text>
+                            이메일
+                        </InputGroup.Text>
                         <Form.Control name='email' value={email} onChange={onChange}/>
                     </InputGroup>
                     <InputGroup className='mb-2'>
                         <InputGroup.Text style={{width:100}} className='justify-content-center'>
-                            비밀번호</InputGroup.Text>
+                            비밀번호
+                        </InputGroup.Text>
                         <Form.Control name='pass' type='password' value={pass} onChange={onChange}/>
                     </InputGroup>
                     <div>
