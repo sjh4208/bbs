@@ -3,7 +3,7 @@ import { Row, Col, Button, Form } from 'react-bootstrap'
 import { app } from '../../Firebaseinit'
 import { getFirestore, collection, addDoc } from 'firebase/firestore'
 import moment from 'moment'
-import { useNavigate } from 'react-router-dom'
+import '../Paging.css'
 
 const InsertPage = () => {
     const db = getFirestore(app);
@@ -43,8 +43,7 @@ const InsertPage = () => {
                 <Form.Control name='contents' value={contents} onChange={onChangeForm}
                     as='textarea' rows={10} placeholder='내용을 입력하세요!'/>
                 <div className='text-center mt-3'>
-                    <Button onClick={onInsert}
-                        className='px-5 me-2'>등록</Button>
+                    <Button onClick={onInsert} className='px-5 me-2'>등록</Button>
                     <Button variant='secondary' className='px-5'>취소</Button>
                 </div>
             </div>

@@ -6,13 +6,14 @@ import Pagination from 'react-js-pagination'
 import '../Paging.css'
 
 const ListPage = () => {
-    const [size, setSize] = useState(3);
+    const [size, setSize] = useState(5);
     const [page, setPage] = useState(1);
     const [count, setCount] = useState(0);
     const email = sessionStorage.getItem('email');
     const uid = sessionStorage.getItem('uid');
     const db = getFirestore(app);
     const [posts, setPosts] = useState([]);
+
     const callAPI =() => {
         const q = query(collection(db, 'posts'), orderBy('date', 'desc'));
         onSnapshot(q, snapshot=>{
@@ -20,13 +21,14 @@ const ListPage = () => {
             let no = 0;
             snapshot.forEach(row => {
                 no++;
-                rows.push({no, id:row.id, ...row.data()});
-            });
+                rows.push({no, id:row.id, ...row.data()
+                })
+            })
             const start = (page-1)*size+1;
-            const end = (page)*size;
+            const end = (page*size);
 
             let data = rows.map((row,index) => row && {seq:no-index, ...row});
-            data=data.filter(row => row.no>=start && row.no<=end);
+            data = data.filter(row => row.no>=start && row.no<=end);
             setCount(no);
             setPosts(data);
         });

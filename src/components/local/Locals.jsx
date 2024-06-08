@@ -65,22 +65,26 @@ const Locals = () => {
       <h1 className='my-5'>지역검색</h1>
         <Row className='mb-2'>
             <Col xs={8} md={6} lg={4}>
-            <form onSubmit={(onSubmit)}>
-                <InputGroup>
-                <Form.Control onChange={(e)=>setQuery(e.target.value)}
-                    placeholder='검색어' value={query}/>
-                <Button type='submit'>검색</Button>
-                </InputGroup>
-            </form>
+                <form onSubmit={(onSubmit)}>
+                    <InputGroup>
+                    <Form.Control onChange={(e)=>setQuery(e.target.value)}
+                        placeholder='검색어' value={query}/>
+                    <Button type='submit'>검색</Button>
+                    </InputGroup>
+                </form>
             </Col>
         </Row>
-      <Table>
+      <Table striped bordered hover>
         <thead>
-            <tr>
-
+            <tr className='text-center'>
+                <td>ID</td>
+                <td>장소명</td>
+                <td>주소</td>
+                <td>전화</td>
+                <td>즐겨찾기</td>
             </tr>
         </thead>
-        <tboby>
+        <tbody>
             {locals.map(local=>
                 <tr key={local.id}>
                     <td>{local.id}</td>
@@ -90,7 +94,7 @@ const Locals = () => {
                     <td><Button onClick={()=>onClickFavorite(local)}>즐겨찾기</Button></td>
                 </tr>
             )}
-        </tboby>
+        </tbody>
       </Table>
     </div>
   )
