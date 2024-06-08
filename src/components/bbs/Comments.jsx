@@ -17,7 +17,7 @@ const Comments = () => {
         onSnapshot(q, snapshot=>{
             let rows = [];
             snapshot.forEach(row=>{
-                rows.push({id:row.id,...row.date()});
+                rows.push({id:row.id,...row.data()});
             });
             const data = rows.map(row => row && {...row, ellip:true, isEdit:false, text:row.contents});
             setComments(data);
@@ -75,6 +75,7 @@ const Comments = () => {
     }
 
     const onClickSave = async(com) => {
+        console.log(com);
         if(com.text !== com.contents) {
             if(!window.confirm('변경된 내용을 저장하시겠어요?')) return;
             await updateDoc(doc(db, `/comments/${com.id}`), com);
